@@ -11,5 +11,4 @@ LABEL "com.github.actions.color"="orange"
 
 RUN pip install awsebcli --disable-pip-version-check --quiet
 
-COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["eb"]
