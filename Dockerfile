@@ -9,6 +9,6 @@ LABEL "com.github.actions.description"="Not an official repository. Deploy with 
 LABEL "com.github.actions.icon"="cloud"
 LABEL "com.github.actions.color"="orange"
 
-RUN pip install awsebcli --disable-pip-version-check --quiet
+RUN pip install awsebcli --disable-pip-version-check
 
 ENTRYPOINT ["eb"]
