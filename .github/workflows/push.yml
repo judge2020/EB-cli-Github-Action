@@ -14,12 +14,16 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_PAT }}
         run: |
           docker login docker.pkg.github.com -u literallyanything -p ${GH_TOKEN}
-      - name: Tag and push image
+      - name: Tag and push date
         run: |
           export DATE_TAG=$(date +%s)
           docker tag eb:latest docker.pkg.github.com/judge2020/eb-cli-github-action/eb:${DATE_TAG}
           docker push docker.pkg.github.com/judge2020/eb-cli-github-action/eb:${DATE_TAG}
-          docker tag eb:latest docker.pkg.github.com/judge2020/eb-cli-github-action/eb:${GITHUB_SHA}
-          docker push docker.pkg.github.com/judge2020/eb-cli-github-action/eb:${GITHUB_SHA}
+      - name: Tag and push branch name
+        run: |
           docker tag eb:latest docker.pkg.github.com/judge2020/eb-cli-github-action/eb:${GITHUB_REF/refs\/heads\//} || echo "failsafe for non-conforming branch names"
           docker push docker.pkg.github.com/judge2020/eb-cli-github-action/eb:${GITHUB_REF/refs\/heads\//} || echo "failsafe for non-conforming branch names"
+      - name: Tag and push SHA
+        run: |
+          docker tag eb:latest docker.pkg.github.com/judge2020/eb-cli-github-action/eb:${GITHUB_SHA}
+          docker push docker.pkg.github.com/judge2020/eb-cli-github-action/eb:${GITHUB_SHA}
