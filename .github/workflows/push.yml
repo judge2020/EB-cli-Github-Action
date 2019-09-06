@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - '*'
+      - '!*/*'
     tags:
       - 'never-on-tags'
 
