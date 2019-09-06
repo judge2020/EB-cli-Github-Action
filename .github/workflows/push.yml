@@ -1,6 +1,11 @@
 name: Docker Image CD
 
-on: push
+on: 
+  push:
+    branches:
+      - '*'
+    tags:
+      - 'never-on-tags'
 
 jobs:
   build:
