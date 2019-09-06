@@ -23,4 +23,4 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_PAT }}
         run: |
           docker login docker.pkg.github.com -u literallyanything -p ${GH_TOKEN}
-          docker push docker.pkg.github.com/judge2020/eb-cli-github-action/eb
+          docker push docker.pkg.github.com/judge2020/eb-cli-github-action/eb:latest
