@@ -28,5 +28,6 @@ jobs:
         run: |
           docker tag eb:latest docker.pkg.github.com/judge2020/eb-cli-github-action/eb:latest
       - name: push to GitHub Package Repository
+        run: |
           docker push docker.pkg.github.com/judge2020/eb-cli-github-action/eb
 
