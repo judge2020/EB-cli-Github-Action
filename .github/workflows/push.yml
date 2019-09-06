@@ -22,7 +22,7 @@ jobs:
       - name: Tag the Docker image
         run: |
           docker tag eb:latest docker.pkg.github.com/judge2020/eb-cli-github-action/eb:$(date +%s)
-          docker tag eb:latest docker.pkg.github.com/judge2020/eb-cli-github-action/eb:${GITHUB_SHA:0:62}
+          docker tag eb:latest docker.pkg.github.com/judge2020/eb-cli-github-action/eb:${GITHUB_SHA:0:39}
           docker tag eb:latest docker.pkg.github.com/judge2020/eb-cli-github-action/eb:${GITHUB_REF/refs\/heads\//} || echo "failsafe for non-conforming branch names"
       - name: Tag latest if master
         if: github.ref == 'refs/heads/master'
