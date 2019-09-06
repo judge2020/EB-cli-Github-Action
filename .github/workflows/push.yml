@@ -24,11 +24,10 @@ jobs:
           docker tag eb:latest docker.pkg.github.com/judge2020/eb-cli-github-action/eb:$(date +%s)
           docker tag eb:latest docker.pkg.github.com/judge2020/eb-cli-github-action/eb:${GITHUB_SHA:0:39}
           docker tag eb:latest docker.pkg.github.com/judge2020/eb-cli-github-action/eb:${GITHUB_REF/refs\/heads\//} || echo "failsafe for non-conforming branch names"
+          docker push docker.pkg.github.com/judge2020/eb-cli-github-action/eb
       - name: Tag latest if master
         if: github.ref == 'refs/heads/master'
         run: |
+          # we push latest separate so it shows up as latest in the UI
           docker tag eb:latest docker.pkg.github.com/judge2020/eb-cli-github-action/eb:latest
-      - name: push to GitHub Package Repository
-        run: |
-          docker push docker.pkg.github.com/judge2020/eb-cli-github-action/eb
-
+          docker push docker.pkg.github.com/judge2020/eb-cli-github-action/eb:latest
